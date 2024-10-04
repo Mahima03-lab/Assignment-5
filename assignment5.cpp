@@ -77,7 +77,7 @@ class Expr{
                     pof+=temp;
                     s.pop();
                 }
-               //if (!s.empty()) 
+               
                     s.pop(); 
             }
             else if(isOperator(inf[i]))
@@ -108,7 +108,13 @@ class Expr{
                     }
                 }
             }
+
+            else if(inf[i]==' ')
+            {
+               continue;
+            }
         }
+        
         while(!s.empty())
         {
             pof+=s.top();
@@ -137,8 +143,13 @@ class Expr{
                 s.pop();
                 int b=s.top();
                 s.pop();
-                int val=evaluate(b,a,pof[i]);
-                s.push(val);
+                if(a==0 && pof[i]== '/')
+                 std::cout<<"Cannot divide an integer by 0!!\nINVALID INPUT!!";
+                else
+                {
+                    int val=evaluate(b,a,pof[i]);
+                    s.push(val);
+                }
             }
             else
             {
@@ -181,3 +192,7 @@ int main()
     std::cout << "REQUIRED RESULT  = " << value.eval() << "\n";
     return 0;
 }
+   
+   
+       
+     
